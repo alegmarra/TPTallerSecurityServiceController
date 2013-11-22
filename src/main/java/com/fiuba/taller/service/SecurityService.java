@@ -62,23 +62,23 @@ public class SecurityService {
 		
 		System.out.println(request);
 		
-//		// Init
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//		LoginAPIHelperStub.RegisterUser securityRequest = new LoginAPIHelperStub.RegisterUser();
-//		LoginAPIHelperStub.RegisterUserResponse wsResponse = new LoginAPIHelperStub.RegisterUserResponse();
-//		
-//		// Armar el request
-//		securityRequest.setArgs0(request.getUsername());
-//		securityRequest.setArgs1(request.getPassword());
-//		securityRequest.setArgs2(request.getNombre());
-//		securityRequest.setArgs3(request.getApellido());
-//		securityRequest.setArgs4(Integer.toString(request.getPadron()));
-//		securityRequest.setArgs5(request.getFechaNac());
-//		securityRequest.setArgs6(request.getEmail());
-//		securityRequest.setArgs7(request.getRol());
-//		
+		// Init
+		SecurityResponse response = new SecurityResponse();
+		
+		LoginAPIHelperStub api = new LoginAPIHelperStub();  
+		LoginAPIHelperStub.RegisterUser securityRequest = new LoginAPIHelperStub.RegisterUser();
+		LoginAPIHelperStub.RegisterUserResponse wsResponse = new LoginAPIHelperStub.RegisterUserResponse();
+		
+		// Armar el request
+		securityRequest.setArgs0(request.getUsername());
+		securityRequest.setArgs1(request.getPassword());
+		securityRequest.setArgs2(request.getNombre());
+		securityRequest.setArgs3(request.getApellido());
+		securityRequest.setArgs4(Integer.toString(request.getPadron()));
+		securityRequest.setArgs5(request.getFechaNac());
+		securityRequest.setArgs6(request.getEmail());
+		securityRequest.setArgs7(request.getRol());
+		
 //		// Hacer el request
 //		wsResponse = api.registerUser(securityRequest);
 //			
@@ -112,16 +112,16 @@ public class SecurityService {
 
 		System.out.println(request);
 		
-//		// Init
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//		LoginAPIHelperStub.Login securityRequest = new LoginAPIHelperStub.Login();
-//		LoginAPIHelperStub.LoginResponse wsResponse = new LoginAPIHelperStub.LoginResponse();
-//		
-//		securityRequest.setUsername(request.getUsername());
-//		securityRequest.setPassword(request.getPassword());
-//		
+		// Init
+		SecurityResponse response = new SecurityResponse();
+		
+		LoginAPIHelperStub api = new LoginAPIHelperStub();  
+		LoginAPIHelperStub.Login securityRequest = new LoginAPIHelperStub.Login();
+		LoginAPIHelperStub.LoginResponse wsResponse = new LoginAPIHelperStub.LoginResponse();
+		
+		securityRequest.setUsername(request.getUsername());
+		securityRequest.setPassword(request.getPassword());
+		
 //		// Hacer el request
 //		wsResponse = api.login(securityRequest);
 //
@@ -158,15 +158,15 @@ public class SecurityService {
 			throws ParserConfigurationException, SAXException, IOException
 	{
 		System.out.println("@CookieParam: " + authToken);
-//		// Init
-//		SecurityResponse response = new SecurityResponse();
-//
-//		LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//		LoginAPIHelperStub.Logout securityRequest = new LoginAPIHelperStub.Logout();
-//		LoginAPIHelperStub.LogoutResponse wsResponse = new LoginAPIHelperStub.LogoutResponse();
-//
-//		securityRequest.setAuthToken(authToken);
-//
+		// Init
+		SecurityResponse response = new SecurityResponse();
+
+		LoginAPIHelperStub api = new LoginAPIHelperStub();  
+		LoginAPIHelperStub.Logout securityRequest = new LoginAPIHelperStub.Logout();
+		LoginAPIHelperStub.LogoutResponse wsResponse = new LoginAPIHelperStub.LogoutResponse();
+
+		securityRequest.setAuthToken(authToken);
+
 //		// Hacer el request
 //		wsResponse = api.logout(securityRequest);
 //
@@ -203,15 +203,15 @@ public class SecurityService {
 	{
 		
 		System.out.println("@CookieParam: " + authToken);
-//		// Init
-//		SecurityResponse response = new SecurityResponse();
-//
-//		LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//		LoginAPIHelperStub.IsTokenValid securityRequest = new LoginAPIHelperStub.IsTokenValid();
-//		LoginAPIHelperStub.IsTokenValidResponse wsResponse = new LoginAPIHelperStub.IsTokenValidResponse();
-//
-//		securityRequest.setAuthToken(authToken);
-//
+		// Init
+		SecurityResponse response = new SecurityResponse();
+
+		LoginAPIHelperStub api = new LoginAPIHelperStub();  
+		LoginAPIHelperStub.IsTokenValid securityRequest = new LoginAPIHelperStub.IsTokenValid();
+		LoginAPIHelperStub.IsTokenValidResponse wsResponse = new LoginAPIHelperStub.IsTokenValidResponse();
+
+		securityRequest.setAuthToken(authToken);
+
 //		// Hacer el request
 //		wsResponse = api.isTokenValid(securityRequest);
 //
@@ -244,21 +244,21 @@ public class SecurityService {
 			throws ParserConfigurationException, SAXException, IOException
 	{
 		System.out.println(request);
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		if (request.getUsername() == "") {
-//			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
-//			
-//			return Response.ok().entity(response).build();
-//		
-//		} else {
-//			
-//			LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//			LoginAPIHelperStub.ActivateUser securityRequest = new LoginAPIHelperStub.ActivateUser();
-//			LoginAPIHelperStub.ActivateUserResponse wsResponse = new LoginAPIHelperStub.ActivateUserResponse();
-//			
-//			securityRequest.setUsername(request.getUsername());
-//			
+		SecurityResponse response = new SecurityResponse();
+		
+		if (request.getUsername() == "") {
+			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
+			
+			return Response.ok().entity(response).build();
+		
+		} else {
+			
+			LoginAPIHelperStub api = new LoginAPIHelperStub();  
+			LoginAPIHelperStub.ActivateUser securityRequest = new LoginAPIHelperStub.ActivateUser();
+			LoginAPIHelperStub.ActivateUserResponse wsResponse = new LoginAPIHelperStub.ActivateUserResponse();
+			
+			securityRequest.setUsername(request.getUsername());
+			
 //			// Hacer el request
 //			wsResponse = api.activateUser(securityRequest);
 //
@@ -281,7 +281,7 @@ public class SecurityService {
 //			return Response.ok()
 //					.entity(response)
 //					.build();
-//		}
+		}
 		return Response.ok().entity("TESTED "+request.toString()).build();
 	}
 
@@ -292,25 +292,25 @@ public class SecurityService {
 			throws ParserConfigurationException, SAXException, IOException
 	{
 		System.out.println(request);
-//		SecurityResponse response = new SecurityResponse();
-//		
-//
-//		if (request.getOldPassword() == "" || request.getNewPassword() == "") {
-//			response = new SecurityResponse(false,
-//					"Parametros Invalidos");
-//			
-//			return Response.ok().entity(response).build();
-//			
-//		} else {
-//			
-//			LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//			LoginAPIHelperStub.ChangePassword securityRequest = new LoginAPIHelperStub.ChangePassword();
-//			LoginAPIHelperStub.ChangePasswordResponse wsResponse = new LoginAPIHelperStub.ChangePasswordResponse();
-//			
-//			securityRequest.setNewPassword(request.getNewPassword());
-//			securityRequest.setOldPassword(request.getOldPassword() );
-//			securityRequest.setAuthToken(authToken);
-//			
+		SecurityResponse response = new SecurityResponse();
+		
+
+		if (request.getOldPassword() == "" || request.getNewPassword() == "") {
+			response = new SecurityResponse(false,
+					"Parametros Invalidos");
+			
+			return Response.ok().entity(response).build();
+			
+		} else {
+			
+			LoginAPIHelperStub api = new LoginAPIHelperStub();  
+			LoginAPIHelperStub.ChangePassword securityRequest = new LoginAPIHelperStub.ChangePassword();
+			LoginAPIHelperStub.ChangePasswordResponse wsResponse = new LoginAPIHelperStub.ChangePasswordResponse();
+			
+			securityRequest.setNewPassword(request.getNewPassword());
+			securityRequest.setOldPassword(request.getOldPassword() );
+			securityRequest.setAuthToken(authToken);
+			
 //			// Hacer el request
 //			wsResponse = api.changePassword(securityRequest);
 //
@@ -333,7 +333,7 @@ public class SecurityService {
 //			return Response.ok()
 //					.entity(response)
 //					.build();
-//		}
+		}
 		return Response.ok().entity("TESTED "+request.toString()).build();
 	}
 
@@ -345,22 +345,22 @@ public class SecurityService {
 	{
 		
 		System.out.println(request);
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		if (request.getUsername() == "") {
-//			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
-//			
-//			return Response.ok().entity(response).build();
-//		
-//		} else {
-//			
-//			LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//			LoginAPIHelperStub.ResetPassword securityRequest = new LoginAPIHelperStub.ResetPassword();
-//			LoginAPIHelperStub.ResetPasswordResponse wsResponse = new LoginAPIHelperStub.ResetPasswordResponse();
-//			
-//			securityRequest.setAuthToken(authToken);
-//			securityRequest.setUserId(request.getUsername());
-//			
+		SecurityResponse response = new SecurityResponse();
+		
+		if (request.getUsername() == "") {
+			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
+			
+			return Response.ok().entity(response).build();
+		
+		} else {
+			
+			LoginAPIHelperStub api = new LoginAPIHelperStub();  
+			LoginAPIHelperStub.ResetPassword securityRequest = new LoginAPIHelperStub.ResetPassword();
+			LoginAPIHelperStub.ResetPasswordResponse wsResponse = new LoginAPIHelperStub.ResetPasswordResponse();
+			
+			securityRequest.setAuthToken(authToken);
+			securityRequest.setUserId(request.getUsername());
+			
 //			// Hacer el request
 //			wsResponse = api.resetPassword(securityRequest);
 //
@@ -383,7 +383,7 @@ public class SecurityService {
 //			return Response.ok()
 //					.entity(response)
 //					.build();
-//		}
+		}
 		return Response.ok().entity("TESTED "+request.toString()).build();
 	}
 
@@ -394,22 +394,22 @@ public class SecurityService {
 			throws ParserConfigurationException, SAXException, IOException
 	{
 		System.out.println(request);
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		if (request.getUsername() == "") {
-//			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
-//			
-//			return Response.ok().entity(response).build();
-//		
-//		} else {
-//			
-//			LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//			LoginAPIHelperStub.DisableAccount securityRequest = new LoginAPIHelperStub.DisableAccount();
-//			LoginAPIHelperStub.DisableAccountResponse wsResponse = new LoginAPIHelperStub.DisableAccountResponse();
-//			
-//			securityRequest.setAuthToken(authToken);
-//			securityRequest.setUserId(request.getUsername());
-//			
+		SecurityResponse response = new SecurityResponse();
+		
+		if (request.getUsername() == "") {
+			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
+			
+			return Response.ok().entity(response).build();
+		
+		} else {
+			
+			LoginAPIHelperStub api = new LoginAPIHelperStub();  
+			LoginAPIHelperStub.DisableAccount securityRequest = new LoginAPIHelperStub.DisableAccount();
+			LoginAPIHelperStub.DisableAccountResponse wsResponse = new LoginAPIHelperStub.DisableAccountResponse();
+			
+			securityRequest.setAuthToken(authToken);
+			securityRequest.setUserId(request.getUsername());
+			
 //			// Hacer el request
 //			wsResponse = api.disableAccount(securityRequest);
 //
@@ -432,7 +432,7 @@ public class SecurityService {
 //			return Response.ok()
 //					.entity(response)
 //					.build();
-//		}
+		}
 		return Response.ok().entity("TESTED "+request.toString()).build();
 	}
 
@@ -444,22 +444,22 @@ public class SecurityService {
 	{
 		
 		System.out.println(request);
-//		SecurityResponse response = new SecurityResponse();
-//		
-//		if (request.getUsername() == "") {
-//			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
-//			
-//			return Response.ok().entity(response).build();
-//		
-//		} else {
-//			
-//			LoginAPIHelperStub api = new LoginAPIHelperStub();  
-//			LoginAPIHelperStub.EnableAccount securityRequest = new LoginAPIHelperStub.EnableAccount();
-//			LoginAPIHelperStub.EnableAccountResponse wsResponse = new LoginAPIHelperStub.EnableAccountResponse();
-//			
-//			securityRequest.setAuthToken(authToken);
-//			securityRequest.setUserId(request.getUsername());
-//			
+		SecurityResponse response = new SecurityResponse();
+		
+		if (request.getUsername() == "") {
+			response = new SecurityResponse(false, "Parametros Invalidos: username vacio");
+			
+			return Response.ok().entity(response).build();
+		
+		} else {
+			
+			LoginAPIHelperStub api = new LoginAPIHelperStub();  
+			LoginAPIHelperStub.EnableAccount securityRequest = new LoginAPIHelperStub.EnableAccount();
+			LoginAPIHelperStub.EnableAccountResponse wsResponse = new LoginAPIHelperStub.EnableAccountResponse();
+			
+			securityRequest.setAuthToken(authToken);
+			securityRequest.setUserId(request.getUsername());
+			
 //			// Hacer el request
 //			wsResponse = api.enableAccount(securityRequest);
 //
@@ -482,7 +482,7 @@ public class SecurityService {
 //			return Response.ok()
 //					.entity(response)
 //					.build();
-//		}
+		}
 		return Response.ok().entity("TESTED "+request.toString()).build();
 	}
 
