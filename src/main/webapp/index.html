@@ -140,6 +140,19 @@
 
      Although this is our sandbox and nothing here is to be delivered, improvements and suggestions are appreciated.
      */
+    function testdummyRequest(){
+    	 $.ajax({
+             type: "POST",
+             url: "api/securityservice/login",
+             async: false,
+             data: JSON.stringify({ username: "str", password: "str"}),
+             contentType: "application/json",
+             dataType: "json"
+     });
+
+    	 
+     }
+     
     function sendRequest(idType, onSuccess, onError) {
         var $el = $("#" + idType),
             url = 'api/securityservice/',
@@ -245,7 +258,7 @@
     function checkSession(){
     	// AJAX request!
         $.ajax({
-            url: 'api/securityservice/isloggedin',
+            url: '/api/securityservice/isloggedin',
             type: 'POST',
             data: {},
             error: function (jqXHR, textStatus, errorThrown ) {
@@ -278,6 +291,10 @@
 	</script>
 </head>
 <body>
+
+<div id="dummyTest">
+	<button onclick="testdummyRequest()">TEST LOGIN</button>
+</div>
 
 <div id="loggedOutSection" style="display: none;">
 	<section id="registeruser">
