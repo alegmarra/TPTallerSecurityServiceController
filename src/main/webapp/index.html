@@ -11,97 +11,6 @@
     </style>
 <script>
 
-	function getXMLDoc(url) {
-		var httpRequest;
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			httpRequest = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			httpRequest = new ActiveXObject("Microsoft.httpRequest");
-		}
-		httpRequest.onreadystatechange = function() {
-			if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-
-				console.log(httpRequest.responseText);
-				
-				xmlDoc = httpRequest.responseXML;
-
-				document.getElementById('User').innerHTML = xmlDoc
-						.getElementsByTagName("user")[0].childNodes[0].nodeValue;
-				document.getElementById('Name').innerHTML = xmlDoc
-						.getElementsByTagName("fullName")[0].childNodes[0].nodeValue;
-				document.getElementById('ID').innerHTML = xmlDoc
-						.getElementsByTagName("id")[0].childNodes[0].nodeValue;
-			}
-		}
-		httpRequest.open("GET", url, true);
-		httpRequest.send();
-	}
-
-	function getJSON(url,fieldID,fieldName,fieldUser) {
-		var httpRequest;
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			httpRequest = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		httpRequest.onreadystatechange = function() {
-			
-			if (httpRequest.readyState == 4) {
-
-				 if (httpRequest.status != 200){
-					document.getElementById('statusError').innerHTML = httpRequest.status;
-					document.getElementById('messageError').innerHTML = httpRequest.responseText;
-						
-				}else{
-					 
-					console.log(httpRequest.responseText);
-					// Javascript function JSON.parse to parse JSON data
-					var jsonObj = JSON.parse(httpRequest.responseText);
-	
-					// jsonObj variable now contains the data structure and can
-					// be accessed as jsonObj.name and jsonObj.country.
-					document.getElementById(fieldUser).innerHTML = jsonObj.user;
-					document.getElementById(fieldName).innerHTML = jsonObj.fullName;
-					document.getElementById(fieldID).innerHTML = jsonObj.id;
-					
-					document.getElementById('status').innerHTML = httpRequest.status;
-				}
-			}
-		}
-		
-		httpRequest.open("GET", url, true);
-		httpRequest.send();
-	}
-	
-	function postJSON(url) {
-		var xmlhttp;
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-				console.log(xmlhttp.responseText);
-				// Javascript function JSON.parse to parse JSON data
-				var jsonObj = JSON.parse(xmlhttp.responseText);
-
-				// jsonObj variable now contains the data structure and can
-				// be accessed as jsonObj.name and jsonObj.country.
-				document.getElementById('UserPosted').innerHTML = jsonObj.user;
-				document.getElementById('NamePosted').innerHTML = jsonObj.fullName;
-				document.getElementById('IDPosted').innerHTML = jsonObj.id;
-			}
-		}
-
-		xmlhttp.open("POST", url);
-		xmlhttp.setRequestHeader("Content-Type", "application/json");
-		xmlhttp.send(JSON.stringify({id:5, user:"myUser", fullName:"myFullName"}));
-	}
-
-
     function getVal ($el) {
         if ($el.prop("tagName") === 'INPUT')
             return $el.val();
@@ -128,13 +37,13 @@
     /*
      Usage: receives the id of the DOM element whose inner elements defines the request through
      a class name convention:
-     url: the URL for the request. Appended to 'api/'
+     url: the URL for the request. Appended to 'api/securityservice/'
      type: HTTP verb. Defaults to 'GET'
      url-param: mandatory parameters of the request, such us user id when using getUser. Appended to the URL
      query-string: optional parameters of the request. Also, a 'param-name' attribute at the element is needed
      data: body of the request. 'param-name' attribute at the element is needed
 
-     url-param, query-string and data elements should be inputs or have a val attribute.
+     url-param, query-string and data elements should be inputs or have a val attribute. TODO: take it from id param
      onSuccess: callback to be called on request success
      onError: callback to be called on request error
 
@@ -189,7 +98,8 @@
         $.ajax({
             url: url,
             type: type,
-            data: data,
+            data: JSON.stringify(data),
+            contentType: 'application/json',
             error: function (jqXHR, textStatus, errorThrown ) {
                 if (typeof onError === "function") {
                     onError.apply(this, arguments);
@@ -247,7 +157,6 @@
         $.ajax({
             url: 'api/securityservice/isloggedin',
             type: 'POST',
-            data: {},
             error: function (jqXHR, textStatus, errorThrown ) {
                 onSuccessfulLogout();
                 
@@ -293,13 +202,13 @@
 	        <label>FechaNac:</label>   <input class="data" param-name="fechaNac" type="date" /><br>
 	        <label>Email:</label>      <input class="data" param-name="email" type="text" /><br>
 	        <label>Rol:</label>        <input class="data" param-name="rol" type="number" /><br>
-	
+
 	        <button onclick="sendRequest('registeruser')">Register</button>
 	    </div>
 	</section>
-	
+
 	<hr />
-	
+
 	<section id="login">
 	    <h2>login test</h2>
 	    <div class="login">
@@ -310,9 +219,9 @@
 	        <button onclick="sendRequest('login', onSuccessfulLogin)">Login</button>
 	    </div>
 	</section>
-	
+
 	<hr />
-	
+
 	<section id="activateuser">
 	    <h2>activateUser test</h2>
 	    <div class="activateuser">
@@ -322,15 +231,15 @@
 	        <button onclick="sendRequest('activateuser')">Activate</button>
 	    </div>
 	</section>
-	
+
 	<hr />
-	
-	<section id="enableAccountFromEmaill">
+
+	<section id="enableaccountfromemail">
 	    <h2>enableAccountFromEmail test (@todo)</h2>
 	    <div class="enableAccountFromEmaill">
-	        <div   class="url" val="enableAccountFromEmaill" style="display: hidden;"/>
+	        <div   class="url" val="enableaccountfromemail" style="display: hidden;"/>
 	        <div   class="type" val="POST" style="display: hidden;"/>
-	        <button onclick="sendRequest('enableAccountFromEmaill')">Enable</button>
+	        <button onclick="sendRequest('enableaccountfromemail')">Enable</button>
 	    </div>
 	</section>
 </div>
